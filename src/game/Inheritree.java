@@ -1,19 +1,18 @@
 package game;
 
-import edu.monash.fit2099.demo.conwayslife.Status;
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.Behaviour;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.fruits.BigFruit;
+import game.fruits.Fruit;
+import game.fruits.SmallFruit;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Inheritree extends Ground {
+    public final Random random = new Random();
+
     private int count = 0;
     private boolean hasGrown;
 
@@ -27,15 +26,22 @@ public class Inheritree extends Ground {
         super.tick(location);
         count++;
         Fruit fruit;
-        if (count > 5)
-            setDisplayChar('T');
-        if (hasGrown) {
-            fruit = new Fruit('O');
-            if (Math.random() <= 0.3) {
 
-            }
+        if (!hasGrown && count > 5) {
+            setDisplayChar('T');
+            hasGrown = true;
+        }
+
+        List<Exit> exits = location.getExits();
+        Location destination = exits.get(random.nextInt(exits.size())).getDestination();
+
+        if (hasGrown) {
+            fruit = new SmallFruit();
         } else {
-            fruit = new Fruit('o');
+            fruit = new BigFruit();
+        }
+        if (fruit.drop()) {
+            destination.addItem(fruit);
         }
 
     }
@@ -44,5 +50,4 @@ public class Inheritree extends Ground {
     public boolean blocksThrownObjects() {
         return true;
     }
-
 }
