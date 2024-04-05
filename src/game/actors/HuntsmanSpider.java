@@ -1,4 +1,4 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,16 +7,23 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.AttackAction;
+import game.behaviours.AttackBehaviour;
+import game.Status;
+import game.behaviours.WanderBehaviour;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class HuntsmanSpider extends Actor {
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    private Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
     public HuntsmanSpider() {
         super("Huntsman Spider", '8', 1);
         this.behaviours.put(999, new WanderBehaviour());
+        this.behaviours.put(0, new AttackBehaviour());
+        this.addCapability(Status.HOSTILE_TO_INTERN);
     }
 
     /**
@@ -53,6 +60,11 @@ public class HuntsmanSpider extends Actor {
             actions.add(new AttackAction(this, direction));
         }
         return actions;
+    }
+
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(1, "long legs", 25);
     }
 
 }

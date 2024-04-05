@@ -2,6 +2,8 @@ package game;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 
@@ -65,6 +67,7 @@ public class AttackAction extends Action {
         int damage = weapon.damage();
         String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
         target.hurt(damage);
+        result += "\n" + target + "'s current hit point: " + target.getAttribute(BaseActorAttributes.HEALTH);
         if (!target.isConscious()) {
             result += "\n" + target.unconscious(actor, map);
         }
