@@ -4,10 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
+import game.grounds.*;
+import game.scraps.LargeBolt;
+import game.scraps.MetalPipe;
+import game.scraps.MetalSheet;
 
 /**
  * The main class to start the game.
@@ -23,7 +28,7 @@ public class Application {
         World world = new World(new Display());
 
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
-                new Wall(), new Floor(), new Puddle());
+                new Wall(), new Floor(), new Puddle(), new Inheritree(), new Crater());
 
         List<String> map = Arrays.asList(
                         "...~~~~.........~~~...........",
@@ -32,9 +37,9 @@ public class Application {
                         "..............................",
                         ".............#####............",
                         ".............#___#...........~",
-                        ".............#___#..........~~",
+                        "............t#___#..........~~",
                         ".............##_##.........~~~",
-                        ".................~~........~~~",
+                        ".......u.........~~........~~~",
                         "................~~~~.......~~~",
                         ".............~~~~~~~........~~",
                         "......~.....~~~~~~~~.........~",
@@ -45,6 +50,15 @@ public class Application {
         GameMap gameMap = new GameMap(groundFactory, map);
         world.addGameMap(gameMap);
 
+        Item largeBolt = new LargeBolt();
+        gameMap.at(8, 2).addItem(largeBolt);
+
+        Item metalSheet = new MetalSheet();
+        gameMap.at(6, 2).addItem(metalSheet);
+
+        Item metalPipe = new MetalPipe();
+        gameMap.at(10, 10).addItem(metalPipe);
+
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
             try {
@@ -54,7 +68,7 @@ public class Application {
             }
         }
 
-        gameMap.at(7, 9).addActor(new HuntsmanSpider());
+//        gameMap.at(7, 9).addActor(new HuntsmanSpider());
 
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
