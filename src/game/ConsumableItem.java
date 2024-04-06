@@ -3,6 +3,7 @@ package game;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import game.actions.ConsumeAction;
 
 public abstract class ConsumableItem extends Item {
     private int healPoints;

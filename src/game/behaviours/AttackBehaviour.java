@@ -6,8 +6,7 @@ import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.weapons.Weapon;
-import game.AttackAction;
+import game.actions.AttackAction;
 import game.Status;
 
 import java.util.ArrayList;
