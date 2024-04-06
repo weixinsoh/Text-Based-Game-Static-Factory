@@ -1,9 +1,10 @@
-package game;
+package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actors.HuntsmanSpider;
+import game.actors.creatures.Creature;
+import game.actors.creatures.HuntsmanSpider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,11 @@ public class Crater extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        HuntsmanSpider creature = new HuntsmanSpider();
+
+        List<Creature> creatures = new ArrayList<>();
+        creatures.add(new HuntsmanSpider());
+        Creature creature = creatures.get(random.nextInt(creatures.size()));
+
         List<Exit> exits = new ArrayList<>();
         for (Exit exit: location.getExits()) {
             if (exit.getDestination().canActorEnter(creature)) {
