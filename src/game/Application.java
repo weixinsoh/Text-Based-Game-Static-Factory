@@ -10,8 +10,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.grounds.*;
+import game.grounds.trees.Sapling;
 import game.scraps.LargeBolt;
-import game.scraps.MetalPipe;
+import game.specialscraps.MetalPipe;
 import game.scraps.MetalSheet;
 
 /**
@@ -28,7 +29,7 @@ public class Application {
         World world = new World(new Display());
 
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
-                new Wall(), new Floor(), new Puddle(), new Inheritree(), new Crater());
+                new Wall(), new Floor(), new Puddle(), new Sapling(), new Crater());
 
         List<String> map = Arrays.asList(
                         "...~~~~.........~~~...........",
@@ -37,7 +38,7 @@ public class Application {
                         "..............................",
                         ".............#####............",
                         ".............#___#...........~",
-                        "............t#___#..........~~",
+                        "........t....#___#..........~~",
                         ".............##_##.........~~~",
                         ".......u.........~~........~~~",
                         "................~~~~.......~~~",

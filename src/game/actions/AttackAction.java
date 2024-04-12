@@ -67,7 +67,7 @@ public class AttackAction extends Action {
         int damage = weapon.damage();
         String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
         target.hurt(damage);
-        result += "\n" + target + "'s current hit point: " + target.getAttribute(BaseActorAttributes.HEALTH);
+
         if (!target.isConscious()) {
             result += "\n" + target.unconscious(actor, map);
         }
