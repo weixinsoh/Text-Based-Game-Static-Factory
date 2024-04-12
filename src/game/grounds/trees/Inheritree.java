@@ -1,49 +1,47 @@
-package game.grounds;
+package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.fruits.BigFruit;
-import game.fruits.Fruit;
-import game.fruits.SmallFruit;
+import game.specialscraps.fruits.Fruit;
 
 import java.util.List;
 import java.util.Random;
 
-public class Inheritree extends Ground {
+public abstract class Inheritree extends Ground {
     public final Random random = new Random();
 
     private int count = 0;
-    private boolean hasGrown;
 
-    public Inheritree() {
-        super('t');
-        this.hasGrown = false;
+    private int ticksBeforeGrow;
+
+    public Inheritree(char displayChar, int ticksBeforeGrow) {
+        super(displayChar);
+        this.ticksBeforeGrow = ticksBeforeGrow;
+    }
+
+    public abstract Fruit growFruit();
+
+    public Inheritree getNextState() {
+        return null;
     }
 
     @Override
     public void tick(Location location) {
         super.tick(location);
         count++;
-        Fruit fruit;
 
-        if (!hasGrown && count > 5) {
-            setDisplayChar('T');
-            hasGrown = true;
+        if (count == ticksBeforeGrow + 1 && getNextState() != null) {
+            location.setGround(getNextState());
         }
 
         List<Exit> exits = location.getExits();
         Location destination = exits.get(random.nextInt(exits.size())).getDestination();
 
-        if (hasGrown) {
-            fruit = new SmallFruit();
-        } else {
-            fruit = new BigFruit();
-        }
+        Fruit fruit = growFruit();
         if (fruit.drop()) {
             destination.addItem(fruit);
         }
-
     }
 
     @Override
