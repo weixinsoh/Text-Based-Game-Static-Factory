@@ -14,13 +14,12 @@ public class ConsumeAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        actor.heal(consumable.getHealPoints());
         actor.removeItemFromInventory(consumable);
-        return String.format("%s consumed %s. ", actor, this);
+        return consumable.consumedBy(actor);
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return actor + " consumes " + consumable;
     }
 }

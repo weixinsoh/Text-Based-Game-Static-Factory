@@ -1,4 +1,4 @@
-package game.scraps;
+package game.specialscraps;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -9,7 +9,7 @@ import game.actions.AttackAction;
 public class MetalPipe extends WeaponItem {
 
     public MetalPipe() {
-        super("metal pipe", '!', 1, "pokes", 20);
+        super("metal pipe", '!', 1, "whacks", 20);
     }
 
     @Override

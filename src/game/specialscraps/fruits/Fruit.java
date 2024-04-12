@@ -1,17 +1,16 @@
-package game.fruits;
+package game.specialscraps.fruits;
 
-import edu.monash.fit2099.engine.items.Item;
 import game.ConsumableItem;
 
 public abstract class Fruit extends ConsumableItem {
-    private double droppingProbability;
+    private final double droppingProbability;
 
     /***
      * Constructor.
      * @param displayChar the character to use to represent this item if it is on the ground
      */
-    public Fruit(String name, char displayChar, double droppingProbability, int healPoints) {
-        super(name, displayChar, true, healPoints);
+    public Fruit(String name, char displayChar, double droppingProbability) {
+        super(name, displayChar, true);
         this.droppingProbability = droppingProbability;
     }
 

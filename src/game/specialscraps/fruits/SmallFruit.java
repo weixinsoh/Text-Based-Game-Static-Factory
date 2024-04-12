@@ -1,8 +1,8 @@
-package game.fruits;
+package game.specialscraps.fruits;
 
-import game.ConsumableItem;
+import edu.monash.fit2099.engine.actors.Actor;
 
-public class SmallFruit extends Fruit {
+public class SmallFruit extends HealingFruit {
     public static final double DROPPING_PROBABILITY = 0.2;
     public static final int HEAL_POINTS = 1;
 
