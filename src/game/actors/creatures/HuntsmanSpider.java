@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
@@ -16,6 +17,10 @@ import game.behaviours.WanderBehaviour;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Class representing huntsman spider that can be spawned by the crater.
+ *
+ */
 public class HuntsmanSpider extends Creature {
 
     public HuntsmanSpider() {
@@ -42,9 +47,32 @@ public class HuntsmanSpider extends Creature {
         return actions;
     }
 
+    /**
+     * Return the intrinsic weapon of the huntsman spider.
+     *
+     * Overrides Actor.getIntrinsicWeapon()
+     *
+     * @see Actor#getIntrinsicWeapon()
+     * @return an intrinsic weapon.
+     */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(1, "long legs", 25);
+    }
+
+    /**
+     * Allow a huntsman spider to be spawned by the Crater.
+     *
+     * Overrides Creature.spawn()
+     *
+     * @return a huntsman spider to be added to map if probability is met, otherwise null.
+     */
+    @Override
+    public Creature spawn() {
+        if (Math.random() <= 0.05) {
+            return new HuntsmanSpider();
+        }
+        return null;
     }
 
 }

@@ -7,25 +7,38 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Abstract base class representing creature that can be spawned by the crater.
+ *
+ */
 public abstract class Creature extends Actor {
 
     private Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
+    private int spawnProbability;
+
     /**
-     * The constructor of the Actor class.
+     * Constructor of the Creature class.
      *
-     * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
+     * @param name        the name of the Creature
+     * @param displayChar the character that will represent the Creature in the display
+     * @param hitPoints   the Creature's starting hit points
      */
     public Creature(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
     }
 
+    /**
+     * Add a behaviour to the TreeMap behaviours with given key.
+     *
+     * @param key An integer to indicate the priority of the behaviour.
+     * @param behaviour The behaviour to add to.
+     */
     public void addBehaviour(int key, Behaviour behaviour) {
         behaviours.put(key, behaviour);
     }
@@ -48,4 +61,12 @@ public abstract class Creature extends Actor {
         }
         return new DoNothingAction();
     }
+
+    /**
+     * Allow a new creature to be spawned by the Crater.
+     *
+     *
+     * @return a Creature to be added to map.
+     */
+    public abstract Creature spawn();
 }

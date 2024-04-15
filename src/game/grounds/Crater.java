@@ -10,20 +10,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Class representing crater that can spawn creatures.
+ *
+ */
 public class Crater extends Ground {
     public final Random random = new Random();
 
-    public Crater() {
+    private Creature creature;
+
+    /**
+     * Constructor of the Crater class.
+     *
+     * @param creature the type of creature to spawn.
+     */
+    public Crater(Creature creature) {
         super('u');
+        this.creature = creature;
     }
 
+    /**
+     * Spawn creature with a probability at every tick.
+     *
+     * Overrides Ground.tick(Location location)
+     *
+     * @see Ground#tick(Location)
+     * @param location The location of the Ground.
+     */
     @Override
     public void tick(Location location) {
         super.tick(location);
-
-        List<Creature> creatures = new ArrayList<>();
-        creatures.add(new HuntsmanSpider());
-        Creature creature = creatures.get(random.nextInt(creatures.size()));
 
         List<Exit> exits = new ArrayList<>();
         for (Exit exit: location.getExits()) {
@@ -33,8 +49,9 @@ public class Crater extends Ground {
         }
         Location destination = exits.get(random.nextInt(exits.size())).getDestination();
 
-        if (Math.random() <= 0.05) {
-            destination.addActor(creature);
+        Creature spawnedCreature = creature.spawn();
+        if (spawnedCreature != null) {
+            destination.addActor(spawnedCreature);
         }
     }
 }
