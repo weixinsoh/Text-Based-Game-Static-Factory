@@ -2,6 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
+import edu.monash.fit2099.engine.positions.Location;
 import game.Ability;
 
 /**
@@ -16,6 +17,15 @@ public class Floor extends Ground {
         super('_');
     }
 
+    /**
+     * Return true if the actor is allowed to enter the spaceship.
+     *
+     * Overrides Ground.canActorEnter(Actor actor)
+     *
+     * @see Ground#canActorEnter(Actor)
+     * @param actor The actor to be checked his capability to enter the spaceship.
+     * @return a boolean indicating the actor can enter the spaceship.
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
         return actor.hasCapability(Ability.ENTER_SPACESHIP);

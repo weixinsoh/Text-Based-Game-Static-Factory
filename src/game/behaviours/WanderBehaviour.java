@@ -16,6 +16,11 @@ import edu.monash.fit2099.engine.actors.Behaviour;
  * Modified by:
  *
  */
+
+/**
+ * Class representing the behaviour to wander around the map.
+ *
+ */
 public class WanderBehaviour implements Behaviour {
 
     private final Random random = new Random();

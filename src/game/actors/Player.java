@@ -32,6 +32,15 @@ public class Player extends Actor {
         this.addCapability(Ability.ENTER_SPACESHIP);
     }
 
+    /**
+     * At each turn, select a valid action to perform.
+     *
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return the valid action that can be performed in that iteration or null if no valid action is found
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // Handle multi-turn Actions
@@ -43,6 +52,14 @@ public class Player extends Actor {
         return menu.showMenu(this, display);
     }
 
+    /**
+     * Return the intrinsic weapon of the player.
+     *
+     * Overrides Actor.getIntrinsicWeapon()
+     *
+     * @see Actor#getIntrinsicWeapon()
+     * @return an intrinsic weapon.
+     */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(1, "punches", 100);

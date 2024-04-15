@@ -12,9 +12,21 @@ import game.Status;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Class representing the behaviour to attack other actors.
+ *
+ */
 public class AttackBehaviour implements Behaviour {
     private final Random random = new Random();
 
+    /**
+     * Returns a AttackAction to attack other actor that is not hostile to intern, if there is an actor in the surroundings.
+     * If no actor is in the surroundings, returns null.
+     *
+     * @param actor the Actor enacting the behaviour
+     * @param map the map that actor is currently on
+     * @return an Action, or null if no actor is in the surroundings.
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
 
