@@ -23,10 +23,14 @@ import java.util.TreeMap;
  */
 public class HuntsmanSpider extends Creature {
 
+    private static final int WANDER_BEHAVIOUR_PRIORITY = 999;
+    private static final int ATTACK_BEHAVIOUR_PRIORITY = 0;
+    private static final double SPAWN_PROBABILITY = 0.05;
+
     public HuntsmanSpider() {
         super("Huntsman Spider", '8', 1);
-        this.addBehaviour(999, new WanderBehaviour());
-        this.addBehaviour(0, new AttackBehaviour());
+        this.addBehaviour(WANDER_BEHAVIOUR_PRIORITY, new WanderBehaviour());
+        this.addBehaviour(ATTACK_BEHAVIOUR_PRIORITY, new AttackBehaviour());
         this.addCapability(Status.HOSTILE_TO_INTERN);
     }
 
@@ -69,7 +73,7 @@ public class HuntsmanSpider extends Creature {
      */
     @Override
     public Creature spawn() {
-        if (Math.random() <= 0.05) {
+        if (Math.random() <= SPAWN_PROBABILITY) {
             return new HuntsmanSpider();
         }
         return null;

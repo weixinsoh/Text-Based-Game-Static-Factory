@@ -20,8 +20,6 @@ public abstract class Creature extends Actor {
 
     private Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
-    private int spawnProbability;
-
     /**
      * Constructor of the Creature class.
      *
