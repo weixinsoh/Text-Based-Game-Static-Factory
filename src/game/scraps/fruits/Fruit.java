@@ -13,13 +13,7 @@ public abstract class Fruit extends ConsumableItem {
      * The probability to drop the fruit.
      *
      */
-    private final double DROPPING_PROBABILITY;
-
-    /**
-     * The amount of points it can heal after consuming by the actor.
-     *
-     */
-    private final int HEAL_POINTS;
+    private final double droppingProbability;
 
     /***
      * Constructor.
@@ -27,36 +21,19 @@ public abstract class Fruit extends ConsumableItem {
      * @param name the name of the fruit
      * @param displayChar the character to use to represent this fruit if it is on the ground
      * @param droppingProbability the probability of dropping the fruit
-     * @param healPoints the points it can heal after consuming by the actor
-     */
-    public Fruit(String name, char displayChar, double droppingProbability, int healPoints) {
+        */
+    public Fruit(String name, char displayChar, double droppingProbability) {
         super(name, displayChar, true);
-        this.DROPPING_PROBABILITY = droppingProbability;
-        this.HEAL_POINTS = healPoints;
+        this.droppingProbability = droppingProbability;
     }
 
     /**
      * Drop the fruit with a probability.
      *
-     *
      * @return a boolean indicating the fruit dropped.
      */
     public boolean drop() {
-        return Math.random() <= DROPPING_PROBABILITY;
-    }
-
-    /**
-     * Heal the actor after consuming.
-     *
-     * Overrides Consumable.consumedBy(Actor actor)
-     *
-     * @see Consumable#consumedBy(Actor) ()
-     * @return a string representing the actor consumed the fruit and healed by point(s).
-     */
-    @Override
-    public String consumedBy(Actor actor) {
-        actor.heal(HEAL_POINTS);
-        return String.format("%s and %s heals %s by %d points. ", super.consumedBy(actor), this, actor, HEAL_POINTS);
+        return Math.random() <= droppingProbability;
     }
 
 }

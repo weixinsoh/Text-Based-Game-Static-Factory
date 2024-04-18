@@ -1,7 +1,6 @@
 package game.scraps.fruits;
 
-import edu.monash.fit2099.engine.positions.Ground;
-import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.actors.Actor;
 
 /**
  * Class representing big fruit that can be produced by the mature stage of the inheritree.
@@ -25,6 +24,18 @@ public class BigFruit extends Fruit {
      *
      */
     public BigFruit() {
-        super("big fruit", 'O', DROPPING_PROBABILITY, HEAL_POINTS);
+        super("big fruit", 'O', DROPPING_PROBABILITY);
+    }
+
+    /**
+     * Heal the actor after consuming.
+     *
+     *
+     * @param actor the actor who consumed the healer.
+     * @return a string representing the actor consumed the small fruit and the small fruit heals him by point(s).
+     */
+    public String consumedBy(Actor actor) {
+        actor.heal(HEAL_POINTS);
+        return String.format("%s and %s heals %s by %d points. ", super.consumedBy(actor), this, actor, HEAL_POINTS);
     }
 }
