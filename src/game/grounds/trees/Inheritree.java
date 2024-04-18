@@ -17,7 +17,7 @@ public abstract class Inheritree extends Ground {
 
     private int count = 0;
 
-    private int ticksBeforeGrow;
+    private final int ticksBeforeGrow;
 
     /**
      * Constructor of the Inheritree class.
