@@ -41,7 +41,7 @@ public abstract class ConsumableItem extends Item implements Consumable {
      *
      * Overrides Consumable.consumedBy(Actor actor)
      *
-     * @see Consumable#consumedBy(Actor) ()
+     * @see Consumable#consumedBy(Actor)
      * @return a string representing the actor consumed the consumable.
      */
     @Override
