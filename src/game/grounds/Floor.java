@@ -2,8 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
-import edu.monash.fit2099.engine.positions.Location;
-import game.Ability;
+import game.capabilities.Ability;
 
 /**
  * A class that represents the floor inside a building.
@@ -13,6 +12,10 @@ import game.Ability;
  *
  */
 public class Floor extends Ground {
+
+    /**
+     * Constructor of the Floor class.
+     */
     public Floor() {
         super('_');
     }

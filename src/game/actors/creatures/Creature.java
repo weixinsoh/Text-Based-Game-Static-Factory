@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -44,6 +43,10 @@ public abstract class Creature extends Actor {
     /**
      * At each turn, select a valid action to perform.
      *
+     *
+     * Overrides Actor.playTurn(ActionList, Action, GameMap, Display)
+     *
+     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
      * @param actions    collection of possible Actions for this Actor
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
      * @param map        the map containing the Actor
@@ -62,7 +65,6 @@ public abstract class Creature extends Actor {
 
     /**
      * Allow a new creature to be spawned by the Crater.
-     *
      *
      * @return a Creature to be added to map.
      */

@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeAction;
-import game.consumable.Consumable;
 
 /**
  * Abstract base class representing consumable item.
@@ -13,7 +12,7 @@ import game.consumable.Consumable;
 public abstract class ConsumableItem extends Item implements Consumable {
     /***
      * Constructor.
-     *  @param name the name of this Item
+     * @param name the name of this Item
      * @param displayChar the character to use to represent this item if it is on the ground
      * @param portable true if and only if the Item can be picked up
      */
@@ -24,9 +23,9 @@ public abstract class ConsumableItem extends Item implements Consumable {
     /**
      * Allow the actor to consume an item.
      *
-     * Overrides Consumable.consumedBy(Actor actor)
+     * Overrides Item.allowableActions(Actor)
      *
-     * @see Consumable#consumedBy(Actor)
+     * @see Item#allowableActions(Actor)
      * @return a list of actions that can be performed on the consumable item.
      */
     @Override
@@ -39,7 +38,7 @@ public abstract class ConsumableItem extends Item implements Consumable {
     /**
      * Add the effect to the actor after consuming.
      *
-     * Overrides Consumable.consumedBy(Actor actor)
+     * Overrides Consumable.consumedBy(Actor)
      *
      * @see Consumable#consumedBy(Actor)
      * @return a string representing the actor consumed the consumable.

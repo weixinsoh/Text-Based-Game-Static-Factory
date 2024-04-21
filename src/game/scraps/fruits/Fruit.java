@@ -1,7 +1,5 @@
 package game.scraps.fruits;
 
-import edu.monash.fit2099.engine.actors.Actor;
-import game.consumable.Consumable;
 import game.consumable.ConsumableItem;
 
 /**

@@ -1,21 +1,13 @@
 package game.actors.creatures;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.Behaviour;
-import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
-import game.Status;
+import game.capabilities.Status;
 import game.behaviours.WanderBehaviour;
-
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Class representing huntsman spider that can be spawned by the crater.
@@ -27,6 +19,10 @@ public class HuntsmanSpider extends Creature {
     private static final int ATTACK_BEHAVIOUR_PRIORITY = 0;
     private static final double SPAWN_PROBABILITY = 0.05;
 
+    /**
+     * Constructor of the HuntsmanSpider class.
+     *
+     */
     public HuntsmanSpider() {
         super("Huntsman Spider", '8', 1);
         this.addBehaviour(WANDER_BEHAVIOUR_PRIORITY, new WanderBehaviour());
@@ -37,6 +33,9 @@ public class HuntsmanSpider extends Creature {
     /**
      * The huntsman spider can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
+     * Overrides Actor.allowableActions(Actor, String, GameMap)
+     *
+     * @see Actor#allowableActions(Actor, String, GameMap)
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap

@@ -11,7 +11,7 @@ public class Sapling extends Inheritree {
     private static final int TICKS_BEFORE_GROW = 5;
 
     /**
-     * Constructor of the Spaling class.
+     * Constructor of the Sapling class.
      *
      */
     public Sapling() {
@@ -21,6 +21,9 @@ public class Sapling extends Inheritree {
     /**
      * Grow a small fruit.
      *
+     * Overrides Inheritree.growFruit()
+     *
+     * @see Inheritree#growFruit()
      * @return a new small fruit.
      */
     @Override
@@ -31,6 +34,9 @@ public class Sapling extends Inheritree {
     /**
      * Return the MatureTree stage to grow into.
      *
+     * Overrides Inheritree.getNextStage()
+     *
+     * @see Inheritree#getNextStage()
      * @return the MatureTree.
      */
     @Override

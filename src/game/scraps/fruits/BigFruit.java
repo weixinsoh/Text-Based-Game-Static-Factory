@@ -30,7 +30,9 @@ public class BigFruit extends Fruit {
     /**
      * Heal the actor after consuming.
      *
+     * Overrides Fruit.consumedBy(Actor)
      *
+     * @see Fruit#consumedBy(Actor)
      * @param actor the actor who consumed the healer.
      * @return a string representing the actor consumed the small fruit and the small fruit heals him by point(s).
      */

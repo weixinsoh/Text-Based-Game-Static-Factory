@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.AttackAction;
-import game.Status;
+import game.capabilities.Status;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -23,6 +23,9 @@ public class AttackBehaviour implements Behaviour {
      * Returns a AttackAction to attack other actor that is not hostile to intern, if there is an actor in the surroundings.
      * If no actor is in the surroundings, returns null.
      *
+     * Overrides Behaviour.getAction(Actor, GameMap)
+     *
+     * @see Behaviour#getAction(Actor, GameMap)
      * @param actor the Actor enacting the behaviour
      * @param map the map that actor is currently on
      * @return an Action, or null if no actor is in the surroundings.

@@ -19,6 +19,9 @@ public class MatureTree extends Inheritree {
     /**
      * Grow a big fruit.
      *
+     * Overrides Inheritree.growFruit(Actor, String, GameMap)
+     *
+     * @see Inheritree#growFruit()
      * @return a new big fruit.
      */
     @Override

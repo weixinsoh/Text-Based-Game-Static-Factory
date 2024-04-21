@@ -13,6 +13,9 @@ import java.util.Random;
  *
  */
 public abstract class Inheritree extends Ground {
+    /**
+     * Random to generate random integer to get random Exit.
+     */
     public final Random random = new Random();
 
     private int count = 0;
@@ -49,7 +52,7 @@ public abstract class Inheritree extends Ground {
     /**
      * Drop fruit with a probability and grow to next stage after several ticks.
      *
-     * Overrides Ground.tick(Location location)
+     * Overrides Ground.tick(Location)
      *
      * @see Ground#tick(Location)
      * @param location The location of the Ground.

@@ -29,6 +29,9 @@ public class WanderBehaviour implements Behaviour {
      * Returns a MoveAction to wander to a random location, if possible.
      * If no movement is possible, returns null.
      *
+     * Overrides Behaviour.getAction(Actor, GameMap)
+     *
+     * @see Behaviour#getAction(Actor, GameMap)
      * @param actor the Actor enacting the behaviour
      * @param map the map that actor is currently on
      * @return an Action, or null if no MoveAction is possible

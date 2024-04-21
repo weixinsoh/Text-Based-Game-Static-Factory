@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.creatures.Creature;
-import game.actors.creatures.HuntsmanSpider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,9 @@ import java.util.Random;
  *
  */
 public class Crater extends Ground {
+    /**
+     * Random used to generate random integer.
+     */
     public final Random random = new Random();
 
     private Creature creature;
@@ -32,7 +34,7 @@ public class Crater extends Ground {
     /**
      * Spawn creature with a probability at every tick.
      *
-     * Overrides Ground.tick(Location location)
+     * Overrides Ground.tick(Location)
      *
      * @see Ground#tick(Location)
      * @param location The location of the Ground.

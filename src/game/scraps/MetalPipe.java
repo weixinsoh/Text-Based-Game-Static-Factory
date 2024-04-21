@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
-import game.consumable.Consumable;
 
 /**
  * Class representing metal pipe.
@@ -24,9 +23,9 @@ public class MetalPipe extends WeaponItem {
     /**
      * Allow the actor to perform an attack using metal pipe.
      *
-     * Overrides WeaponItem.allowableActions(Actor otherActor, Location location)
+     * Overrides WeaponItem.allowableActions(Actor, Location)
      *
-     * @see WeaponItem#allowableActions(Actor)
+     * @see WeaponItem#allowableActions(Actor, Location)
      * @return a list of actions that can be performed by the actor.
      */
     @Override

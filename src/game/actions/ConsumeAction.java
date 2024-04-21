@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.consumable.Consumable;
-import game.consumable.ConsumableItem;
 
 /**
  * Class representing an action to consume.
@@ -16,7 +15,7 @@ public class ConsumeAction extends Action {
     /**
      * Constructor of the ConsumeAction class.
      *
-     * @param consumable matter to be consumed.
+     * @param consumable substance to be consumed.
      */
     public ConsumeAction(Consumable consumable) {
         this.consumable = consumable;
@@ -25,7 +24,7 @@ public class ConsumeAction extends Action {
     /**
      * Allow the Actor to consume something.
      *
-     * Overrides Action.execute()
+     * Overrides Action.execute(Actor, GameMap)
      *
      * @see Action#execute(Actor, GameMap)
      * @param actor The actor performing the action.
